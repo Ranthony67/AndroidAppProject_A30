@@ -15,4 +15,7 @@
         completions."
     </string>
     <string name="overview_label">Oversigt</string>
+    <string name="nyIndberetning">Ny indberetning</string>
+    <string name="historik">Historik</string>
+
 </resources>

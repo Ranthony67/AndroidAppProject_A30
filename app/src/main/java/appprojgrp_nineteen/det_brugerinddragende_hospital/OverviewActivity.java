@@ -2,6 +2,7 @@ package appprojgrp_nineteen.det_brugerinddragende_hospital;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 public class OverviewActivity extends AppCompatActivity {
 
