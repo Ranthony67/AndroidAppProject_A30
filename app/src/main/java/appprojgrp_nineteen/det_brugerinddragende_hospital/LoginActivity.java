@@ -3,6 +3,7 @@ package appprojgrp_nineteen.det_brugerinddragende_hospital;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -66,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -324,7 +327,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -333,6 +336,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Intent intent = new Intent(LoginActivity.this, OverviewActivity.class);
+                startActivity(intent);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

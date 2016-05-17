@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="appprojgrp_nineteen.det_brugerinddragende_hospital.LoginActivity">
+    tools:context="appprojgrp_nineteen.det_brugerinddragende_hospital.LoginActivity"
+    android:background="#EEEEEE">
 
     <!-- Login progress -->
     <ProgressBar
@@ -22,7 +23,9 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -38,7 +41,7 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
+                    android:hint="@string/prompt_username"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -70,8 +73,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:backgroundTint="@color/buttonBackgroundTint"
+                android:textColor="@color/buttonTextColor" />
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Afdeling A30"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Aarhus University Hospital"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
