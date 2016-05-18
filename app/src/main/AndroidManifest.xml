@@ -26,8 +26,12 @@
         <activity android:name=".ReportActivity" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
-
+            android:label="@string/title_activity_login"
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
     </application>
 
