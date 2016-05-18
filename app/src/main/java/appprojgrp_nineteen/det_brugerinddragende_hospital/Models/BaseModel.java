@@ -7,7 +7,7 @@ public abstract class BaseModel {
     public int id;
 
     public String tableName() {
-        return getClass().getSimpleName().toString().toLowerCase();
+        return getClass().getSimpleName().toLowerCase();
     }
 
     public abstract ContentValues getContentValues();

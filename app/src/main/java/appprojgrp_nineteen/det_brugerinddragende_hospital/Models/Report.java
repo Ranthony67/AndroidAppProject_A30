@@ -1,6 +1,7 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital.Models;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class Report extends BaseModel {
@@ -26,6 +27,14 @@ public class Report extends BaseModel {
         values.put("synced_with_remote", syncedWithRemote);
 
         return values;
+    }
+
+    public void populateFromCursor(Cursor cursor){
+        id = cursor.getInt(cursor.getColumnIndex("id"));
+        remoteId = cursor.getInt(cursor.getColumnIndex("remoteId"));
+        name = cursor.getString(cursor.getColumnIndex("name"));
+        comment = cursor.getString(cursor.getColumnIndex("comment"));
+        childId = cursor.getInt(cursor.getColumnIndex("childId"));
     }
 
     public static void createTable(SQLiteDatabase db) {
