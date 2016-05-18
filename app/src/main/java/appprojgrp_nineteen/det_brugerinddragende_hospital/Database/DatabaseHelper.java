@@ -20,7 +20,7 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Info
     private static final String DATABASE_NAME = "reportingDatabase";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -83,7 +83,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(sql, null);
 
         try {
-
             T object = cls.newInstance();
             object.populateFromCursor(cursor);
             objectList.add(object);

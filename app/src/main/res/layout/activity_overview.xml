@@ -10,56 +10,10 @@
     android:background="@color/background"
     tools:context="appprojgrp_nineteen.det_brugerinddragende_hospital.OverviewActivity">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/childView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        card_view:cardElevation="@dimen/cardview_compat_inset_shadow">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/buttonTextColor">
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"/>
 
-            <TextView
-                android:id="@+id/name_text"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Rasmus Anthony"
-                android:textSize="30sp"
-                android:paddingTop="10dp"
-                android:paddingLeft="10dp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background"
-                android:layout_alignBottom="@+id/name_text"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nyIndberetning"
-                android:id="@+id/button"
-                android:layout_below="@+id/name_text"
-                android:layout_alignParentStart="true"
-                android:background="#ffffff"
-                android:padding="3dp"
-                style="?android:attr/borderlessButtonStyle"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/historik"
-                android:id="@+id/button2"
-                android:layout_below="@+id/name_text"
-                android:layout_alignParentEnd="true"
-                android:background="#ffffff"
-                android:padding="3dp"
-                style="?android:attr/borderlessButtonStyle"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
 </LinearLayout>
