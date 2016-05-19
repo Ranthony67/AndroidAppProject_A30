@@ -1,9 +1,13 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital.Database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.BaseModel;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
@@ -66,6 +70,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             db.endTransaction();
         }
+    }
+
+    public <T extends BaseModel> ArrayList<T> getAll(Class<T> cls) throws Exception {
+        T info = cls.newInstance();
+        String tableName = info.tableName();
+
+        List<T> objectList = new ArrayList<>();
+
+        String sql = String.format("SELECT * FROM %s ORDER BY id DESC", tableName);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        try {
+
+            T object = cls.newInstance();
+            object.populateFromCursor(cursor);
+            objectList.add(object);
+
+        } catch (Exception e) {
+            Log.v("DatabaseHelper", "GetAll Exception: " + e);
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return new ArrayList<T>();
     }
 
 /*

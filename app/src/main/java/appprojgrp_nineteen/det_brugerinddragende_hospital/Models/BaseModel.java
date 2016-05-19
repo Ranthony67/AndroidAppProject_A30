@@ -1,15 +1,15 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital.Models;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
-public class BaseModel {
+public abstract class BaseModel {
     public int id;
 
     public String tableName() {
         return getClass().getSimpleName().toString().toLowerCase();
     }
 
-    public ContentValues getContentValues() {
-        return new ContentValues();
-    }
+    public abstract ContentValues getContentValues();
+    public abstract void populateFromCursor(Cursor cursor);
 }
