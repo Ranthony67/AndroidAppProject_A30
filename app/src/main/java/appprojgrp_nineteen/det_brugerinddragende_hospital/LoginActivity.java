@@ -332,6 +332,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return true;
 
             } catch (IOException e) {
+                Log.v("UserLoginTask Exception", e.toString());
                 return false;
             }
         }
