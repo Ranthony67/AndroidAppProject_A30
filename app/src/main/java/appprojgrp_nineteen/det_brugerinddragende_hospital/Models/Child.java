@@ -35,13 +35,13 @@ public class Child extends BaseModel {
     }
 
     public static void createTable(SQLiteDatabase db) {
-        String CREATE_WEATHER_TABLE = "CREATE TABLE " + TABLE_NAME +
+        String CreateTableSql = "CREATE TABLE " + TABLE_NAME +
                 "(" +
                 "id INTEGER PRIMARY KEY," +
                 "name TEXT," +
                 "department TEXT" +
                 ")";
 
-        db.execSQL(CREATE_WEATHER_TABLE);
+        db.execSQL(CreateTableSql);
     }
 }

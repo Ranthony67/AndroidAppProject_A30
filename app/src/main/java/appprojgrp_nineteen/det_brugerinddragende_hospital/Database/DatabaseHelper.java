@@ -1,14 +1,17 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital.Database;
 
+import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import appprojgrp_nineteen.det_brugerinddragende_hospital.MainApplication;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.BaseModel;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
@@ -20,7 +23,22 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Info
     private static final String DATABASE_NAME = "reportingDatabase";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 8;
+
+    private static DatabaseHelper mInstance = null;
+
+    public static DatabaseHelper getInstance() {
+        /**
+         * use the application context as suggested by CommonsWare.
+         * this will ensure that you dont accidentally leak an Activitys
+         * context (see this article for more information:
+         * http://developer.android.com/resources/articles/avoiding-memory-leaks.html)
+         */
+        if (mInstance == null) {
+            mInstance = new DatabaseHelper(MainApplication.getAppContext());
+        }
+        return mInstance;
+    }
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -76,17 +94,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         T info = cls.newInstance();
         String tableName = info.tableName();
 
-        List<T> objectList = new ArrayList<>();
+        ArrayList<T> objectList = new ArrayList<>();
 
         String sql = String.format("SELECT * FROM %s ORDER BY id DESC", tableName);
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         try {
-            T object = cls.newInstance();
-            object.populateFromCursor(cursor);
-            objectList.add(object);
-
+            if (cursor.moveToFirst()) {
+                do {
+                    T object = cls.newInstance();
+                    object.populateFromCursor(cursor);
+                    objectList.add(object);
+                } while (cursor.moveToNext());
+            }
         } catch (Exception e) {
             Log.v("DatabaseHelper", "GetAll Exception: " + e);
         } finally {
@@ -95,7 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
 
-        return new ArrayList<T>();
+        return objectList;
     }
 
 /*
