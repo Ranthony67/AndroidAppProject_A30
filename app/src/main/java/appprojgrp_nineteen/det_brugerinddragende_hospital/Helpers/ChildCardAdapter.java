@@ -9,20 +9,28 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import appprojgrp_nineteen.det_brugerinddragende_hospital.MainApplication;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.R;
 
-/**
- * Created by Rasmus on 19/05/2016.
- */
 public class ChildCardAdapter extends RecyclerView.Adapter<ChildCardAdapter.ChildViewHolder> {
-
     private ArrayList<Child> _childrenData = new ArrayList<>();
     private ChildViewHolder childViewHolder;
 
     public ChildCardAdapter(ArrayList<Child> children) {
         this._childrenData = children;
+    }
+
+    public void clear() {
+        _childrenData.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Child> list) {
+        _childrenData.addAll(list);
+        notifyDataSetChanged();
     }
 
     public static class ChildViewHolder extends RecyclerView.ViewHolder {

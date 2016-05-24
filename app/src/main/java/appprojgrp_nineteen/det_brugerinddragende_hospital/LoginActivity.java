@@ -327,6 +327,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     return false;
                 }
 
+                MainApplication.setAuthToken(info.auth_token);
+                MainApplication.setUserInfo(info);
                 Log.v("AuthToken", info.auth_token);
 
                 return true;

@@ -1,5 +1,9 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital.Api;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -15,10 +19,12 @@ public interface LoginService {
     public static class UserInfo {
         public final String email;
         public final String auth_token;
+        public ArrayList<Child> children;
 
-        public UserInfo(String email, String auth_token) {
+        public UserInfo(String email, String auth_token, ArrayList<Child> children) {
             this.email = email;
             this.auth_token = auth_token;
+            this.children = children;
         }
     }
 
@@ -30,7 +36,7 @@ public interface LoginService {
         }
     }
 
-    public static class User {
+    class User {
         public final String email;
         public final String password;
 
