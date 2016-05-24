@@ -17,7 +17,7 @@ public abstract class BaseModel {
     public abstract ContentValues getContentValues();
     public abstract void populateFromCursor(Cursor cursor);
 
-    public void save() {
-        DatabaseHelper.getInstance().insertModel(this);
+    public Boolean save() {
+        return DatabaseHelper.getInstance().insertModel(this);
     }
 }
