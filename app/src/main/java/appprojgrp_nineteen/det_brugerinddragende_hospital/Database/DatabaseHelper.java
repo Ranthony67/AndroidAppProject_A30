@@ -23,7 +23,7 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Info
     private static final String DATABASE_NAME = "reportingDatabase";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 10;
 
     private static DatabaseHelper mInstance = null;
 
@@ -60,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void insertModel(BaseModel model) {
+    public boolean insertModel(BaseModel model) {
         SQLiteDatabase db = getWritableDatabase();
 
         db.beginTransaction();
@@ -69,10 +69,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.setTransactionSuccessful();
             Log.v("DatabaseHelper", "Inserted model");
         } catch (Exception e) {
-
+            return false;
         } finally {
             db.endTransaction();
         }
+
+        return true;
     }
 
     public void deleteModel(BaseModel model) {
