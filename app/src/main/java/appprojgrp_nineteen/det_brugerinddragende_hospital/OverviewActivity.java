@@ -1,5 +1,6 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +26,6 @@ import retrofit2.Call;
 
 public class OverviewActivity extends AppCompatActivity {
 
-    private DatabaseHelper dbHelper;
     private SwipeRefreshLayout swipeContainer;
     private ChildCardAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -38,32 +42,52 @@ public class OverviewActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 Log.v("swipeContainer", "Refreshing");
-
                 new FetchChildrenTask().execute();
             }
         });
 
-        dbHelper = DatabaseHelper.getInstance();
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        //recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         try {
-            childrenData =  MainApplication.getUserInfo().children; //dbHelper.getAll(Child.class);
+            childrenData = MainApplication.getUserInfo().children;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        adapter = new ChildCardAdapter(childrenData);
+        adapter = new ChildCardAdapter(childrenData, this);
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.options_sign_out:
+                handleApiErrorAndSignOut();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.v("OverviewActivity", "onActivityResult requestCode: " + requestCode + ", resultCode: ");
+    }
 
     public class FetchChildrenTask extends AsyncTask<Void, Void, Boolean> {
-
         @Override
         protected Boolean doInBackground(Void... voids) {
             ChildrenService client = ServiceGenerator.createService(ChildrenService.class);
@@ -89,9 +113,18 @@ public class OverviewActivity extends AppCompatActivity {
             if (success) {
                 adapter.clear();
                 adapter.addAll(MainApplication.getUserInfo().children);
+            } else {
+                handleApiErrorAndSignOut();
             }
 
             swipeContainer.setRefreshing(false);
         }
-    };
+    }
+
+    private void handleApiErrorAndSignOut() {
+        MainApplication.signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

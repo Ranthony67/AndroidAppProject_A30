@@ -15,18 +15,87 @@
         android:layout_height="wrap_content"
         android:text="SAVE"
         android:id="@+id/btnSave"
+        android:width="135dp"
         android:backgroundTint="@color/buttonBackgroundTint"
         android:textColor="@color/buttonTextColor"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CANCEL"
+        android:width="135dp"
         android:id="@+id/btnCancel"
+        android:backgroundTint="@color/buttonCancelBackgroundTint"
+        android:textColor="@color/buttonTextColor"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/report_activity.what_have_you_done_today"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20dp"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/report_activity.medicine"
+        android:id="@+id/btnMedicine"
         android:backgroundTint="@color/buttonBackgroundTint"
         android:textColor="@color/buttonTextColor"
-        android:layout_alignTop="@+id/btnSave"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/report_activity.food"
+        android:id="@+id/btnFood"
+        android:backgroundTint="@color/buttonBackgroundTint"
+        android:textColor="@color/buttonTextColor"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/btnMedicine"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/report_activity.changed_diaper"
+        android:id="@+id/btnDiaper"
+        android:backgroundTint="@color/buttonBackgroundTint"
+        android:textColor="@color/buttonTextColor"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/btnFood"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/report_activity.comment"
+        android:id="@+id/textView4"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/btnDiaper"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:height="140dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtComment"
+        android:layout_above="@+id/btnSave"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="top"/>
 </RelativeLayout>

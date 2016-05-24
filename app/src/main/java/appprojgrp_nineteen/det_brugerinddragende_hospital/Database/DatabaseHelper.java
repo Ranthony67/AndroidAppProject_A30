@@ -23,7 +23,7 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Info
     private static final String DATABASE_NAME = "reportingDatabase";
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 12;
 
     private static DatabaseHelper mInstance = null;
 
@@ -65,8 +65,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.beginTransaction();
         try {
-            db.insertOrThrow(model.tableName(), null, model.getContentValues());
+            int id = (int) db.insertOrThrow(model.tableName(), null, model.getContentValues());
             db.setTransactionSuccessful();
+            model.id = id;
+
             Log.v("DatabaseHelper", "Inserted model");
         } catch (Exception e) {
             return false;
@@ -119,6 +121,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return objectList;
+    }
+
+    public <T extends BaseModel> T find(Class<T> cls, int id) throws Exception {
+        T info = cls.newInstance();
+        String tableName = info.tableName();
+
+        String sql = String.format("SELECT * FROM %s WHERE id = %s", tableName, id);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(tableName, null, String.format("id=%s", id), null, null, null, null, null);
+
+        T model = null;
+
+        try {
+            cursor.moveToFirst();
+            T object = cls.newInstance();
+            object.populateFromCursor(cursor);
+            model = object;
+
+        } catch (Exception e) {
+            Log.v("DatabaseHelper", "Find Exception: " + e);
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return model;
+    }
+
+    public Boolean update(BaseModel object) {
+        SQLiteDatabase db = getReadableDatabase();
+        int affected = db.update(object.tableName(), object.getContentValues(), "id=" + object.id, null);
+
+        if (affected == 1) {
+            return true;
+        }
+
+        return false;
     }
 
 /*

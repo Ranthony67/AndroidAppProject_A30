@@ -4,18 +4,26 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Kodeord</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">LOGIN</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."
     </string>
     <string name="overview_label">Oversigt</string>
-    <string name="nyIndberetning">Ny indberetning</string>
-    <string name="historik">Historik</string>
-    <string name="prompt_username">Brugernavn</string>
+    <string name="nyIndberetning">New report</string>
+    <string name="historik">History</string>
+    <string name="prompt_username">Username</string>
+
+    <string name="report_activity.label">New report</string>
+    <string name="report_activity.what_have_you_done_today">What have you done today?</string>
+    <string name="report_activity.medicine">MEDICINE</string>
+    <string name="report_activity.food">Food</string>
+    <string name="report_activity.changed_diaper">Changed diaper</string>
+    <string name="report_activity.comment">Comment</string>
+    <string name="report_activity.on_text">\u2713 </string>
+    <string name="sign_out">Sign out</string>
 </resources>

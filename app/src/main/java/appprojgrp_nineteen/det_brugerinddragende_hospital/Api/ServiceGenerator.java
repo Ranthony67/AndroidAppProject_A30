@@ -38,12 +38,15 @@ public class ServiceGenerator {
         });
 
         if (MainApplication.getAuthToken() != "") {
+
+            final String auth_token = MainApplication.getAuthToken();
+
             httpClient.addInterceptor(new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request original = chain.request();
                     Request request = original.newBuilder()
-                            .header("Authorization", MainApplication.getAuthToken())
+                            .header("Authorization", auth_token)
                             .method(original.method(), original.body())
                             .build();
                     return chain.proceed(request);
