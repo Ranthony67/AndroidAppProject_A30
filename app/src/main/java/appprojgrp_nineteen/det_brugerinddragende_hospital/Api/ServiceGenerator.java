@@ -4,6 +4,7 @@ package appprojgrp_nineteen.det_brugerinddragende_hospital.Api;
 import java.io.IOException;
 
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Constants.Constants;
+import appprojgrp_nineteen.det_brugerinddragende_hospital.MainApplication;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,7 +29,6 @@ public class ServiceGenerator {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
-
                 Request request = original.newBuilder()
                         .header("Accept", "application/vnd.a30backend.v" + Constants.API_VERSION)
                         .method(original.method(), original.body())
@@ -36,6 +36,20 @@ public class ServiceGenerator {
                 return chain.proceed(request);
             }
         });
+
+        if (MainApplication.getAuthToken() != "") {
+            httpClient.addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request original = chain.request();
+                    Request request = original.newBuilder()
+                            .header("Authorization", MainApplication.getAuthToken())
+                            .method(original.method(), original.body())
+                            .build();
+                    return chain.proceed(request);
+                }
+            });
+        }
 
         Retrofit retrofit = builder.client(httpClient.build()).build();
         return retrofit.create(serviceClass);
