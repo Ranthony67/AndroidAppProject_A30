@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +38,10 @@ public class ChildCardAdapter extends RecyclerView.Adapter<ChildCardAdapter.Chil
         notifyDataSetChanged();
     }
 
+    /*
+    * Gracefully learned at
+    * http://www.journaldev.com/10024/android-recyclerview-and-cardview-example-tutorial
+    * */
     public static class ChildViewHolder extends RecyclerView.ViewHolder {
         TextView nameView;
         TextView departmentView;
