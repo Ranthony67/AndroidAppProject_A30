@@ -14,6 +14,7 @@ public class Child extends BaseModel {
     public ContentValues getContentValues() {
         ContentValues values = new ContentValues();
 
+        values.put("id", id);
         values.put("name", name);
         values.put("department", department);
 

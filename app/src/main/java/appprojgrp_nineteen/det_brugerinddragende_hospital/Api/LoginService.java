@@ -6,8 +6,10 @@ import java.util.List;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -15,6 +17,12 @@ import retrofit2.http.Path;
 public interface LoginService {
     @POST("users/login")
     Call<UserInfo> login(@Body UserContainer user);
+
+    @DELETE("users/logout")
+    Call<Boolean> signout();
+
+    @GET("users/info")
+    Call<UserInfo> getInfo();
 
     public static class UserInfo {
         public final String email;

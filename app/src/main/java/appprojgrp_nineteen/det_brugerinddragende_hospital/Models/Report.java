@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import appprojgrp_nineteen.det_brugerinddragende_hospital.Database.DatabaseHelper;
+
 public class Report extends BaseModel {
     public static final String TABLE_NAME = "report";
 
     public int remoteId;
     public String comment;
-    public int childId;
+    public int child_id;
 
     public Boolean medicine = false;
     public Boolean food = false;
@@ -24,7 +26,7 @@ public class Report extends BaseModel {
 
         values.put("remote_id", remoteId);
         values.put("comment", comment);
-        values.put("child_id", childId);
+        values.put("child_id", child_id);
 
         values.put("medicine", medicine);
         values.put("food", food);
@@ -37,18 +39,24 @@ public class Report extends BaseModel {
 
     @Override
     public Boolean save() {
-        if (childId == 0){
+        if (child_id == 0){
             return false;
         }
 
         return super.save();
     }
 
+    public void syncDone() {
+        syncedWithRemote = true;
+        DatabaseHelper.getInstance().update(this);
+    }
+
     public void populateFromCursor(Cursor cursor){
         id = cursor.getInt(cursor.getColumnIndex("id"));
-        remoteId = cursor.getInt(cursor.getColumnIndex("remoteId"));
+        remoteId = cursor.getInt(cursor.getColumnIndex("remote_id"));
         comment = cursor.getString(cursor.getColumnIndex("comment"));
-        childId = cursor.getInt(cursor.getColumnIndex("childId"));
+        child_id = cursor.getInt(cursor.getColumnIndex("child_id"));
+        syncedWithRemote = cursor.getInt(cursor.getColumnIndex("synced_with_remote")) == 1 ? true : false;
 
         medicine = cursor.getInt(cursor.getColumnIndex("medicine")) == 1 ? true : false;
         food = cursor.getInt(cursor.getColumnIndex("food")) == 1 ? true : false;

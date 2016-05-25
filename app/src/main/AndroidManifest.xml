@@ -19,30 +19,27 @@
             android:name=".OverviewActivity"
             android:label="@string/overview_label">
 
-           <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
 
-        <activity android:name=".ReportActivity">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
+        <activity
+            android:name=".ReportActivity"
+            android:label="@string/report_activity.label"></activity>
 
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:noHistory="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
+        <service
+            android:name=".Services.SyncService"
+            android:enabled="true" />
     </application>
 
 </manifest>
