@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Constants.Constants;
+import appprojgrp_nineteen.det_brugerinddragende_hospital.HistoryActivity;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.R;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.ReportActivity;
@@ -97,8 +98,13 @@ public class ChildCardAdapter extends RecyclerView.Adapter<ChildCardAdapter.Chil
 
         holder.history.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Log.v("history", "onClick");
+
+                Intent intent = new Intent(v.getContext(), HistoryActivity.class);
+                intent.putExtra("child-id", child.id);
+                intent.putExtra("child-name", child.name);
+                ((Activity)passedContext).startActivityForResult(intent, Constants.NEW_REPORT_RESULT);
             }
         });
     }

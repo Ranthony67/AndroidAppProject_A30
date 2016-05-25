@@ -59,7 +59,7 @@ public class ReportActivity extends AppCompatActivity {
             String childName = passedIntent.getStringExtra("child-name");
 
             tempReport.child_id = childId;
-            setTitle(getString(R.string.report_activity_label) + " for " + childName);
+            setTitle(childName);
 
             Log.v("ReportActivity", "Intent, child-id: " + passedIntent.getIntExtra("child-id", 0));
         }

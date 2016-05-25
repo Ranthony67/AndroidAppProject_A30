@@ -1,5 +1,6 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital.Helpers;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,12 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
 
     private ArrayList<Report> _reportData = new ArrayList<>();
     private ReportViewHolder reportViewHolder;
+    private Context _context;
 
-    public ReportListAdapter(ArrayList<Report> reports){ _reportData = reports; }
+    public ReportListAdapter(ArrayList<Report> reports, Context context){
+        _reportData = reports;
+        _context = context;
+    }
 
     public void clear(){
         _reportData.clear();
