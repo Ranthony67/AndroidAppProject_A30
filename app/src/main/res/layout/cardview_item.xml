@@ -8,7 +8,6 @@
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:layout_marginTop="@dimen/cardview_margins"
-
     card_view:cardElevation="@dimen/cardview_compat_inset_shadow">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
             android:layout_height="60dp"
             android:textSize="20sp"
             android:paddingTop="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +29,7 @@
             android:id="@+id/departmentText"
             android:layout_alignBottom="@id/nameText"
             android:layout_alignStart="@+id/nameText"
-            android:layout_marginBottom="6dp"/>
+            android:layout_marginBottom="6dp" />
 
         <View
             android:layout_width="match_parent"

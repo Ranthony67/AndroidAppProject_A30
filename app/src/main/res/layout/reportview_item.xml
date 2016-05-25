@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reportView"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginBottom="@dimen/cardview_margins"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/cardview_margins"
+    card_view:cardElevation="@dimen/cardview_compat_inset_shadow">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/buttonTextColor">
+
+        <TextView
+            android:id="@+id/medicineTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medicine"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/reportTopMargin"/>
+
+        <TextView
+            android:id="@+id/foodTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food"
+            android:layout_marginTop="@dimen/reportTopMargin"
+            android:layout_below="@+id/medicineTextView"
+            android:layout_alignStart="@+id/medicineTextView" />
+
+        <TextView
+            android:id="@+id/diaperTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diaper_changed"
+            android:layout_marginTop="@dimen/reportTopMargin"
+            android:layout_below="@+id/foodTextView"
+            android:layout_alignStart="@+id/foodTextView"/>
+
+        <TextView
+            android:id="@+id/cTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Comment"
+            android:layout_marginTop="@dimen/reportTopMargin"
+            android:layout_below="@+id/diaperTextView"
+            android:layout_alignStart="@+id/diaperTextView"/>
+
+        <TextView
+            android:id="@+id/commentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reportTopMargin"
+            android:layout_below="@+id/cTextView"
+            android:layout_alignStart="@+id/cTextView" />
+
+        <TextView
+            android:id="@+id/medicineGivenTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/cTextView"
+            android:layout_alignTop="@+id/medicineTextView"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:id="@+id/foodGivenTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/medicineGivenTextView"
+            android:layout_alignStart="@+id/medicineGivenTextView"
+            android:layout_alignTop="@+id/foodTextView"/>
+
+        <TextView
+            android:id="@+id/diaperChangedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/foodGivenTextView"
+            android:layout_alignStart="@+id/foodGivenTextView"
+            android:layout_alignTop="@+id/diaperTextView"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

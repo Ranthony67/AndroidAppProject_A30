@@ -14,10 +14,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."
     </string>
     <string name="overview_label">Oversigt</string>
-    <string name="nyIndberetning">New report</string>
-    <string name="historik">History</string>
-    <string name="prompt_username">Username</string>
-
     <string name="report_activity.label">New report</string>
     <string name="report_activity.what_have_you_done_today">What have you done today?</string>
     <string name="report_activity.medicine">MEDICINE</string>
@@ -26,4 +22,11 @@
     <string name="report_activity.comment">Comment</string>
     <string name="report_activity.on_text">\u2713 </string>
     <string name="sign_out">Sign out</string>
+    <string name="nyIndberetning">New Report</string>
+    <string name="historik">History</string>
+    <string name="prompt_username">Username</string>
+    <string name="Comment">Comment:</string>
+    <string name="diaper_changed">Diaper:</string>
+    <string name="food">Food:</string>
+    <string name="medicine">Medicine:</string>
 </resources>

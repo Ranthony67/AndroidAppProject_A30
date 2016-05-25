@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="cardview_margins">8dp</dimen>
+
+    <dimen name="reportTopMargin">5dp</dimen>
 </resources>

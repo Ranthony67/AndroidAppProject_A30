@@ -37,6 +37,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".HistoryActivity"></activity>
+
         <service
             android:name=".Services.SyncService"
             android:enabled="true" />

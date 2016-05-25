@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.LoginService;
-import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.ServiceGenerator;
-import appprojgrp_nineteen.det_brugerinddragende_hospital.Constants.Constants;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Database.DatabaseHelper;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;

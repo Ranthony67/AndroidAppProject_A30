@@ -19,7 +19,6 @@ import java.util.List;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.ChildrenService;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.LoginService;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.ServiceGenerator;
-import appprojgrp_nineteen.det_brugerinddragende_hospital.Database.DatabaseHelper;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Helpers.ChildCardAdapter;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
 import retrofit2.Call;
@@ -29,7 +28,7 @@ public class OverviewActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeContainer;
     private ChildCardAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private static RecyclerView recyclerView;
+    private static RecyclerView childRecyclerView;
     private static ArrayList<Child> childrenData = new ArrayList<>();
 
     @Override
@@ -37,7 +36,7 @@ public class OverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.childSwipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -46,10 +45,10 @@ public class OverviewActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        childRecyclerView = (RecyclerView) findViewById(R.id.childRecyclerView);
 
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        childRecyclerView.setLayoutManager(layoutManager);
 
         try {
             childrenData = MainApplication.getUserInfo().children;
@@ -58,7 +57,7 @@ public class OverviewActivity extends AppCompatActivity {
         }
 
         adapter = new ChildCardAdapter(childrenData, this);
-        recyclerView.setAdapter(adapter);
+        childRecyclerView.setAdapter(adapter);
     }
 
     @Override
