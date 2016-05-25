@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.LoginService;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Database.DatabaseHelper;
 
 public class Report extends BaseModel {
@@ -16,6 +17,7 @@ public class Report extends BaseModel {
     public Boolean medicine = false;
     public Boolean food = false;
     public Boolean diaper = false;
+    public String created_by;
 
     // Local variable, not present from API json
     public boolean syncedWithRemote = false;
