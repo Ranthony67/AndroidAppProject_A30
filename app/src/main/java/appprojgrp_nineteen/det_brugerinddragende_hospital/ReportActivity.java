@@ -1,5 +1,6 @@
 package appprojgrp_nineteen.det_brugerinddragende_hospital;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,6 +53,16 @@ public class ReportActivity extends AppCompatActivity {
         btnFood = (Button) findViewById(R.id.btnFood);
         btnDiaper = (Button) findViewById(R.id.btnDiaper);
 
+
+        txtComment.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
         tempReport = new Report();
 
         Intent passedIntent = getIntent();
@@ -65,6 +77,14 @@ public class ReportActivity extends AppCompatActivity {
         }
 
         setupEventHandlers();
+    }
+
+    /**
+     * http://stackoverflow.com/questions/4165414/how-to-hide-soft-keyboard-on-android-after-clicking-outside-edittext
+     */
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private void setupEventHandlers() {
