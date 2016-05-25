@@ -40,6 +40,7 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
         TextView foodView;
         TextView diaperView;
         TextView commentView;
+        TextView nurseView;
 
         public ReportViewHolder(View itemView) {
             super(itemView);
@@ -48,6 +49,7 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
             this.foodView = (TextView) itemView.findViewById(R.id.foodGivenTextView);
             this.diaperView = (TextView) itemView.findViewById(R.id.diaperChangedTextView);
             this.commentView = (TextView) itemView.findViewById(R.id.commentTextView);
+            this.nurseView = (TextView) itemView.findViewById(R.id.nurseName);
         }
     }
 
@@ -66,6 +68,7 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
         TextView foodText = holder.foodView;
         TextView diaperText = holder.diaperView;
         TextView commentText = holder.commentView;
+        TextView nurseText = holder.nurseView;
 
         final Report report = _reportData.get(position);
 
@@ -74,6 +77,7 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
         if(report.diaper) diaperText.setText("Har fået skiftet ble");
 
         commentText.setText(report.comment);
+        nurseText.setText(report.created_by);
     }
 
     @Override
