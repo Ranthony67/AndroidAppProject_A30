@@ -13,7 +13,7 @@ import java.util.List;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.R;
 
-public class    ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.ReportViewHolder>{
+public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.ReportViewHolder>{
 
     private ArrayList<Report> _reportData = new ArrayList<>();
     private ReportViewHolder reportViewHolder;
