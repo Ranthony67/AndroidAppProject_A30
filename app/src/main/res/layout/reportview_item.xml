@@ -41,13 +41,22 @@
             android:layout_alignStart="@+id/foodTextView"/>
 
         <TextView
+            android:id="@+id/nurseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Nurse"
+            android:layout_marginTop="@dimen/reportTopMargin"
+            android:layout_below="@+id/diaperTextView"
+            android:layout_alignStart="@+id/diaperTextView"/>
+
+        <TextView
             android:id="@+id/cTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Comment"
             android:layout_marginTop="@dimen/reportTopMargin"
-            android:layout_below="@+id/diaperTextView"
-            android:layout_alignStart="@+id/diaperTextView"/>
+            android:layout_below="@+id/nurseTextView"
+            android:layout_alignStart="@+id/nurseTextView"/>
 
         <TextView
             android:id="@+id/commentTextView"
@@ -80,6 +89,14 @@
             android:layout_below="@+id/foodGivenTextView"
             android:layout_alignStart="@+id/foodGivenTextView"
             android:layout_alignTop="@+id/diaperTextView"/>
+
+        <TextView
+            android:id="@+id/nurseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/diaperChangedTextView"
+            android:layout_alignStart="@+id/diaperChangedTextView"
+            android:layout_alignTop="@+id/nurseTextView"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

@@ -29,4 +29,5 @@
     <string name="diaper_changed">Diaper:</string>
     <string name="food">Food:</string>
     <string name="medicine">Medicine:</string>
+    <string name="Nurse">Sygeplejerske</string>
 </resources>
