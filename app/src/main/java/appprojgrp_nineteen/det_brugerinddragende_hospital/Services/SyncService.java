@@ -7,6 +7,7 @@ import android.util.Log;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.ReportService;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.ServiceGenerator;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Database.DatabaseHelper;
+import appprojgrp_nineteen.det_brugerinddragende_hospital.MainApplication;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
 import retrofit2.Call;
 
@@ -23,9 +24,13 @@ public class SyncService extends IntentService {
         int reportId = intent.getIntExtra(PARAMS_REPORT_ID, 0);
         if (reportId == 0) return;
 
+        if (!MainApplication.networkAvailable()) {
+            Log.v("SyncService", "No internet / not connected.");
+            return;
+        }
+
         try {
             Report report = DatabaseHelper.getInstance().find(Report.class, reportId);
-
             ReportService reportService = ServiceGenerator.createService(ReportService.class);
 
             Call<Report> call = reportService.create(report);

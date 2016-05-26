@@ -8,4 +8,6 @@ public final class Constants {
     public static final String API_BASE_URL_PRODUCTION = "http://a30backend.herokuapp.com/";
 
     public static final int NEW_REPORT_RESULT = 101;
+    public static final long FETCH_REPEAT = 10 * 1000;
+    public static final String BACKGROUND_RESUBMIT_TRIGGER = "com.a30.resubmit_trigger";
 }

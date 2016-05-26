@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -70,6 +71,10 @@ public class MainApplication extends Application {
         return getAuthToken() != "";
     }
 
+    public static boolean networkAvailable() {
+        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
 
     public static class SignOutTask extends AsyncTask<Void, Void, Boolean> {
 

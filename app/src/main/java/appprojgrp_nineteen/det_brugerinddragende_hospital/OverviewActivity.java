@@ -21,6 +21,7 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.LoginService;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Api.ServiceGenerator;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Helpers.ChildCardAdapter;
 import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Child;
+import appprojgrp_nineteen.det_brugerinddragende_hospital.Services.ResubmitService;
 import retrofit2.Call;
 
 public class OverviewActivity extends AppCompatActivity {
@@ -58,6 +59,9 @@ public class OverviewActivity extends AppCompatActivity {
 
         adapter = new ChildCardAdapter(childrenData, this);
         childRecyclerView.setAdapter(adapter);
+
+        Intent intent = new Intent(this, ResubmitService.class);
+        startService(intent);
     }
 
     @Override
@@ -99,6 +103,9 @@ public class OverviewActivity extends AppCompatActivity {
                 MainApplication.setUserInfo(info);
                 Log.v("swipeContainer", "Children count: " + children.size());
 
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+                return false;
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
