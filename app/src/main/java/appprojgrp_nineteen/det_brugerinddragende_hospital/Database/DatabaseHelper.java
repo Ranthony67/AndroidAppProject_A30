@@ -95,12 +95,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public <T extends BaseModel> ArrayList<T> getAll(Class<T> cls) throws Exception {
+        return getAll(cls, "");
+    }
+
+    public <T extends BaseModel> ArrayList<T> getAll(Class<T> cls, String whereClause) throws Exception {
         T info = cls.newInstance();
         String tableName = info.tableName();
 
         ArrayList<T> objectList = new ArrayList<>();
 
-        String sql = String.format("SELECT * FROM %s ORDER BY id DESC", tableName);
+        String where =  whereClause.isEmpty() ? "" : " WHERE " + whereClause;
+        String sql = String.format("SELECT * FROM %s%s ORDER BY id DESC", tableName, where);
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 

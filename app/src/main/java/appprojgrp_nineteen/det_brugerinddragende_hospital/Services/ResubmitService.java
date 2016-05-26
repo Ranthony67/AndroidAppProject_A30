@@ -59,7 +59,7 @@ public class ResubmitService extends IntentService {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.v("FetchWeatherService", "onReceive");
+            Log.v("broadcastReceiver", "onReceive");
             String action = intent.getAction();
             switch (action) {
                 case Constants.BACKGROUND_RESUBMIT_TRIGGER:
@@ -71,11 +71,10 @@ public class ResubmitService extends IntentService {
 
     private void resubmitReports() {
         try {
-            List<Report> reports = DatabaseHelper.getInstance().getAll(Report.class);
+            List<Report> reports = DatabaseHelper.getInstance().getAll(Report.class, "synced_with_remote = 0");
 
             for(int i = 0; i < reports.size(); i++) {
                 Report report = reports.get(i);
-                if (report.syncedWithRemote) continue;
                 Intent syncIntent = new Intent(ResubmitService.this, SyncService.class);
                 syncIntent.putExtra(SyncService.PARAMS_REPORT_ID, report.id);
                 startService(syncIntent);
