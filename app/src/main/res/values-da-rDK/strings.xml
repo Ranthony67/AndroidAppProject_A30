@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Det_brugerinddragende_hospital</string>
+    <string name="title_activity_login">Det Brugerinddragende Hospital</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Kodeord</string>
+    <string name="action_sign_in">LOGIN</string>
+    <string name="action_sign_in_short">Log ind</string>
+    <string name="error_invalid_email">Denne mailadresse er forkert</string>
+    <string name="error_invalid_password">Kodeordet er for kort</string>
+    <string name="error_incorrect_password">Kodeordet er forkert</string>
+    <string name="error_field_required">Dette felt er påkrævet</string>
+    <string name="permission_rationale">"Kontakt tilladelser er behøvet for email færdiggørelse."
+    </string>
+    <string name="overview_label">Oversigt</string>
+    <string name="report_activity.label">Ny Rapport</string>
+    <string name="report_activity.what_have_you_done_today">Hvad har du lavet i dag?</string>
+    <string name="report_activity.medicine">MEDICIN</string>
+    <string name="report_activity.food">Mad</string>
+    <string name="report_activity.changed_diaper">Skiftet ble</string>
+    <string name="report_activity.comment">Kommentar</string>
+    <string name="report_activity.on_text">\u2713 </string>
+    <string name="sign_out">Log ud</string>
+    <string name="historik">Historik</string>
+    <string name="prompt_username">Brugernavn</string>
+    <string name="Comment">Kommentar:</string>
+    <string name="diaper_changed">Ble:</string>
+    <string name="food">Mad:</string>
+    <string name="medicine">Medicin:</string>
+    <string name="Nurse">Sygeplejerske:</string>
+    <string name="save">GEM</string>
+    <string name="cancel">ANNULLER</string>
+</resources>

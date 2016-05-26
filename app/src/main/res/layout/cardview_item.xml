@@ -42,7 +42,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nyIndberetning"
+            android:text="@string/report_activity.label"
             android:id="@+id/newReport"
             android:layout_below="@+id/nameText"
             android:layout_alignParentStart="true"
