@@ -71,6 +71,9 @@ public class MainApplication extends Application {
         return getAuthToken() != "";
     }
 
+    /**
+     * http://stackoverflow.com/questions/13293220/connectivitymanager-connectivity-action-get-network-disconected-from-in-api-1
+     */
     public static boolean networkAvailable() {
         final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
