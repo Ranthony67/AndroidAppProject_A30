@@ -13,7 +13,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="appprojgrp_nineteen.det_brugerinddragende_hospital.ReportActivity"
+        tools:context="grp19.det_brugerinddragende_hospital.ReportActivity"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         android:clickable="true" >
