@@ -33,4 +33,7 @@
     <string name="save">GEM</string>
     <string name="cancel">ANNULLER</string>
     <string name="no_internet">Der er ingen internet forbindelse</string>
+    <string name="medicin_given">Der er givet medicin</string>
+    <string name="food_given">Der er givet mad</string>
+    <string name="diaper_is_changed">Har fået skiftet ble</string>
 </resources>

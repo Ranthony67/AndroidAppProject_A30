@@ -32,4 +32,7 @@
     <string name="save">SAVE</string>
     <string name="cancel">CANCEL</string>
     <string name="no_internet">There is no internet connection, please try again later.</string>
+    <string name="medicin_given">Medicin is given</string>
+    <string name="food_given">Food is given</string>
+    <string name="diaper_is_changed">Diaper has been changed</string>
 </resources>

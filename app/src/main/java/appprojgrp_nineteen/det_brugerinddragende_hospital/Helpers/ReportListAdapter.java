@@ -74,9 +74,9 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
         foodText.setText("");
         diaperText.setText("");
 
-        if(report.medicine) medicineText.setText("Der er givet medicin");
-        if(report.food) foodText.setText("Der er givet mad");
-        if(report.diaper) diaperText.setText("Har fået skiftet ble");
+        if(report.medicine) medicineText.setText(R.string.medicin_given);
+        if(report.food) foodText.setText(R.string.food_given);
+        if(report.diaper) diaperText.setText(R.string.diaper_is_changed);
 
         commentText.setText(report.comment);
         nurseText.setText(report.created_by);
