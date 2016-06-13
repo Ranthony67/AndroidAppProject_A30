@@ -16,7 +16,6 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.R;
 public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.ReportViewHolder>{
 
     private ArrayList<Report> _reportData = new ArrayList<>();
-    private ReportViewHolder reportViewHolder;
     private Context _context;
 
     public ReportListAdapter(ArrayList<Report> reports, Context context){
@@ -58,8 +57,7 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.reportview_item, parent, false);
 
-        reportViewHolder = new ReportViewHolder(view);
-        return reportViewHolder;
+        return new ReportViewHolder(view);
     }
 
     @Override
@@ -70,7 +68,11 @@ public class ReportListAdapter extends RecyclerView.Adapter<ReportListAdapter.Re
         TextView commentText = holder.commentView;
         TextView nurseText = holder.nurseView;
 
-        final Report report = _reportData.get(position);
+        Report report = _reportData.get(position);
+
+        medicineText.setText("");
+        foodText.setText("");
+        diaperText.setText("");
 
         if(report.medicine) medicineText.setText("Der er givet medicin");
         if(report.food) foodText.setText("Der er givet mad");
