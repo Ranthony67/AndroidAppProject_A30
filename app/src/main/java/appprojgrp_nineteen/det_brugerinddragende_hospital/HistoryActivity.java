@@ -65,20 +65,27 @@ public class HistoryActivity extends AppCompatActivity {
         new FetchReportsTask().execute();
     }
 
-    private class FetchReportsTask extends AsyncTask<Void, Void, Boolean>{
+    private class FetchReportsTask extends AsyncTask<Void, Void, Boolean> {
 
         private List<Report> reports;
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-
-            ReportService reportService = ServiceGenerator.createService(ReportService.class);
-            Call<List<Report>> call = reportService.getAllReports(child_id);
-
             try {
+                ReportService reportService = ServiceGenerator.createService(ReportService.class);
+                Call<List<Report>> call = reportService.getAllReports(child_id);
                 reports = call.execute().body();
+
+                if (reports == null) {
+                    return false;
+                }
+
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+                return false;
             } catch (IOException e) {
                 e.printStackTrace();
+                return false;
             }
 
             return true;
@@ -86,15 +93,27 @@ public class HistoryActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean success) {
-            super.onPostExecute(success);
-            UpdateReports(reports);
+            Log.v("History", "Success: " + success);
+            if (success) {
+                UpdateReports(reports);
+            } else {
+                handleApiErrorAndSignOut();
+            }
 
             swipeContainer.setRefreshing(false);
         }
     }
 
-    public void UpdateReports(List<Report> reports){
+    public void UpdateReports(List<Report> reports) {
         adapter.clear();
         adapter.addAll(reports);
+    }
+
+
+    private void handleApiErrorAndSignOut() {
+        MainApplication.signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
