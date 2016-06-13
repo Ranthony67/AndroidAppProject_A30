@@ -20,6 +20,7 @@ import appprojgrp_nineteen.det_brugerinddragende_hospital.Models.Report;
  * Gracefully learned from this source:
  * https://github.com/codepath/android_guides/wiki/Local-Databases-with-SQLiteOpenHelper
  */
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Info
     private static final String DATABASE_NAME = "reportingDatabase";
@@ -63,8 +64,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertModel(BaseModel model) {
         SQLiteDatabase db = getWritableDatabase();
 
-        db.beginTransaction();
         try {
+            db.beginTransaction();
+
             int id = (int) db.insertOrThrow(model.tableName(), null, model.getContentValues());
             db.setTransactionSuccessful();
             model.id = id;
@@ -104,7 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ArrayList<T> objectList = new ArrayList<>();
 
-        String where =  whereClause.isEmpty() ? "" : " WHERE " + whereClause;
+        String where = whereClause.isEmpty() ? "" : " WHERE " + whereClause;
         String sql = String.format("SELECT * FROM %s%s ORDER BY id DESC", tableName, where);
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);

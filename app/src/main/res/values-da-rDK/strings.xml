@@ -32,4 +32,5 @@
     <string name="Nurse">Sygeplejerske:</string>
     <string name="save">GEM</string>
     <string name="cancel">ANNULLER</string>
+    <string name="no_internet">Der er ingen internet forbindelse</string>
 </resources>

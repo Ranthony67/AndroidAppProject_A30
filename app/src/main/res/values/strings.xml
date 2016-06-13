@@ -31,4 +31,5 @@
     <string name="Nurse">Nurse:</string>
     <string name="save">SAVE</string>
     <string name="cancel">CANCEL</string>
+    <string name="no_internet">There is no internet connection, please try again later.</string>
 </resources>
